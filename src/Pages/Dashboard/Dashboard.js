@@ -13,6 +13,7 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 function Dashboard() {
+  console.log(configuration.apiKey);
   const [inputText, setInputText] = useState("");
   const [outputText, setOutputText] = useState("");
   const [loading, setLoading] = useState(false);
