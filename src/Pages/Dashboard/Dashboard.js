@@ -25,7 +25,7 @@ function Dashboard() {
       model: "text-davinci-003",
       prompt: `Correct this to standard written language:${inputText}.`,
       temperature: 0,
-      max_tokens: 60,
+      max_tokens: 2048,
       top_p: 1.0,
       frequency_penalty: 0.0,
       presence_penalty: 0.0,
