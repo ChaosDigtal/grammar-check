@@ -5,10 +5,10 @@ import { InputText } from "primereact/inputtext";
 import axios from "axios";
 import "./Dashboard.css";
 import { Configuration, OpenAIApi } from "openai";
-//"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"
+//"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"
 
 const configuration = new Configuration({
-  apiKey: "s"+"k"+"-"+"uwWzKq46vkMyiL9CD4" + "v7T3BlbkFJVUuQ8uboICj2rWML8BiD",
+  apiKey: process.env.REACT_APP_OPENAI_KEY,
 });
 const openai = new OpenAIApi(configuration);
 
