@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import { InputTextarea } from "primereact/inputtextarea";
 import { Button } from "primereact/button";
+import { InputText } from "primereact/inputtext";
 import axios from "axios";
 import "./Dashboard.css";
 import { Configuration, OpenAIApi } from "openai";
+//"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"
 
 const configuration = new Configuration({
-    apiKey: "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",
+  apiKey: process.env.REACT_APP_OPENAI_KEY,
 });
 const openai = new OpenAIApi(configuration);
 
@@ -14,6 +16,7 @@ function Dashboard() {
   const [inputText, setInputText] = useState("");
   const [outputText, setOutputText] = useState("");
   const [loading, setLoading] = useState(false);
+  const [key, setKey] = useState("");
 
   const improve = async () => {
     setLoading(true);
@@ -28,41 +31,6 @@ function Dashboard() {
     });
     setLoading(false);
     setOutputText(completion.data.choices[0].text.substring(2));
-    // const openaiEndpoint =
-    //   "https://api.openai.com/v1/engines/text-davinci-003/completions";
-    // const openaiApiKey = "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";
-
-    // const requestBody = {
-    //   prompt:
-    //     "Correct this to standard English:\n\n" + inputText,
-    //   temperature: 0.7,
-    //   max_tokens: 60,
-    //   top_p: 1,
-    //   frequency_penalty: 0,
-    //   presence_penalty: 0,
-    //   stop: ["\n"],
-    //   n: 1,
-    // };
-
-    // axios
-    //   .post(openaiEndpoint, requestBody, {
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       Authorization: `Bearer ${openaiApiKey}`,
-    //     },
-    //   })
-    //   .then((response) => {
-    //     const correctedText = response.data.choices[0].text;
-    //     setOutputText(correctedText.split(" <br> ").join("\n"));
-    //     setLoading(false);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //     setOutputText(
-    //       error + "\n" + error["response"]["data"]["error"]["message"]
-    //     );
-    //     setLoading(false);
-    //   });
   };
 
   return (
